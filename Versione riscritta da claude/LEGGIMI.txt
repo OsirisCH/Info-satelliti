@@ -1,0 +1,55 @@
+PIPELINE CORRETTA - Rientri payload LEO (GCAT) 1957-2050
+=========================================================
+
+COME SI USA
+1. Metti TUTTI i file .m nella stessa cartella (o aggiungila al path con addpath).
+2. In config_analisi.m imposta cfg.CARTELLA (dove c'e' satcat.txt).
+   Opzionale ma raccomandato: scarica auxcat.tsv da
+   https://planet4589.org/space/gcat/tsv/cat/auxcat.tsv e salvalo come auxcat.txt
+   nella stessa cartella: verranno risolti anche gli ospiti con JCAT "A...".
+3. Esegui in ordine: Phase1, Phase1b, Phase2, Phase3, Phase4, Phase5, Phase6, Phase7.
+   Ogni fase e' autosufficiente (si puo' lanciare da sola): le regole comuni
+   stanno in funzioni condivise, non sono piu' copiate in ogni script.
+4. Per salvare tutte le figure in PNG (cartella "figure"): cfg.SALVA_FIGURE = true.
+
+REQUISITI
+MATLAB R2016b o successivo, oppure GNU Octave 7 o successivo.
+Nessun toolbox (Kaplan-Meier, Cox, quantili e fit sono implementati qui).
+La prima lettura di satcat.txt crea satcat.txt.cache.mat (solo il parsing,
+nessuna regola di analisi); viene rigenerata automaticamente se il file cambia.
+
+FILE
+Script (uno per fase)          Sostituisce
+  Phase1.m                     Phase1_correct.m
+  Phase1b.m                    Phase1b.m
+  Phase2.m                     Phase2.m
+  Phase3.m                     Phase3.m
+  Phase4.m                     Phase4.m
+  Phase5.m                     Phase5c.m
+  Phase6.m                     Phase6_correct.m
+  Phase7.m                     Phase7_correct.m
+
+Funzioni condivise
+  config_analisi.m        tutti i parametri e le ASSUNZIONI (scenari, target, vite, PMD)
+  leggi_catalogo_gcat.m   lettura vettoriale del TSV + cache
+  parse_data_gcat.m       date GCAT -> datenum
+  parse_numero_gcat.m     numeri GCAT -> double
+  prepara_popolazione.m   regole sulla popolazione (unico punto)
+  risolvi_ospite.m        catena Dest ricorsiva
+  quantile_matlab.m       quantile come MATLAB, senza toolbox
+  km_sopravvivenza.m      Kaplan-Meier + IC 95% Greenwood
+  S_km_a.m                valore della KM a un tempo dato
+  fit_sopravvivenza.m     MLE Weibull / Lognormale / versioni cure, AIC/BIC
+  S_modello.m             S(t) di un modello
+  curve_sopravvivenza.m   curve usate nelle proiezioni (ristimate ogni volta)
+  modello_mega.m          curva assunta per le costellazioni giovani
+  cox_breslow.m           modello di Cox (Breslow), anche con troncamento
+  corr_spearman.m, rango_medio.m
+  griglia_anni.m          asse in anni solari (primo anno parziale)
+  proiezione_stock.m      rientri dello stock attuale (Fase 5)
+  proiezione_nuovi.m      lanci futuri stock-flusso + loro rientri (Fase 6)
+  stampa_tabella.m, nuova_figura.m, salva_figura.m
+
+output_riferimento/  log dell'esecuzione di riferimento (GNU Octave 8.4,
+                     satcat aggiornato al 21/09/2026): in MATLAB devi ottenere
+                     gli stessi numeri (a meno di arrotondamenti all'ultima cifra).

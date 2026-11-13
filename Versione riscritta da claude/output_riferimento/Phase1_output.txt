@@ -1,0 +1,71 @@
+Catalogo aggiornato al: 21-Sep-2026   (data di censura OGGI = 21-Sep-2026)
+Auxcat (catalogo A) caricato: 0
+
+[1] Righe nel catalogo:                  69999
+[2] Payload:                             27852
+[3] Payload in LEO:                      25214
+
+    Payload LEO per sottorbita:
+    LLEO/I    15884
+    LLEO/S     4964
+    LEO/I      1962
+    LEO/S       882
+    LLEO/P      732
+    LEO/P       608
+    LLEO/R       65
+    LEO/E        41
+    LLEO/E       40
+    LEO/R        36
+
+[4] Payload LEO per categoria (tutti, prima delle esclusioni):
+    Guowang             204
+    Kuiper              398
+    OneWeb              656
+    OtherLEO          11264
+    Qianfan             239
+    Starlink_V1        4680
+    Starlink_V2        7764
+    Stazioni              9
+    di cui Guowang riconosciuti per bus "Xingwang*"/nome "WHDW": 177 (prima finivano in OtherLEO)
+
+[5] Destino dei payload LEO
+    Rientrati con data (R/D/AR):                           6200
+    Rientrati recuperati dalla catena degli ospiti:         186
+    In orbita (censurati a OGGI):                         17216
+    Esclusi:                                               1612
+        anomalo_evento_senza_data              19
+        date_incoerenti                        32
+        fase_chiusa_irrisolta                 417
+        fase_chiusa_ospite_escluso              5
+        status_escluso                       1139
+    Popolazione valida:                                   23602  (eventi 6386, censurati 17216)
+
+[6] Oggetti in "fase chiusa" (DK, GRP, ATT, TFR, N, ...): 644
+    Status      evento   escluso    orbita    ignoto
+    ATT              2         0         0        32
+    DK             178         4        24       255
+    GRP              0         1         1        60
+    N                0         0         0        28
+    REL              0         0         0         1
+    TFR              6         0         0        52
+    Irrisolti ed esclusi: 417, di cui ospite nel catalogo A (manca auxcat.txt): 280
+    Veicoli cargo irrisolti (Progress, Tianzhou, ATV, HTV, Cygnus...): 178, massa 915 t
+    -> rientri distruttivi reali che mancano allo storico: va dichiarato
+       (o recuperato caricando auxcat.txt).
+
+[7] Popolazione valida per categoria finale (terzili OtherLEO: Q1=10.0 kg, Q2=200.0 kg)
+    Categoria                n  eventi   stock   peri>600 massa nota
+    Starlink_V1           4680    1495    3185         0%       100%
+    Starlink_V2           7764     241    7523         0%       100%
+    Kuiper                 398       6     392         0%       100%
+    OneWeb                 656       2     654         4%       100%
+    Guowang                204       1     203        94%       100%
+    Qianfan                239       0     239       100%       100%
+    OtherLEO_leggero      3473    2562     911         5%       100%
+    OtherLEO_medio        2929     892    2037        34%       100%
+    OtherLEO_pesante      3167    1108    2059        45%       100%
+    Stazioni                 9       0       9         0%       100%
+    Altro                   83      79       4         2%        89%
+
+Nota: il campo Perigee di GCAT e' l'orbita all'epoca ODate (di solito
+quella di inserimento): Starlink ~270 km invece dei ~550 operativi.
